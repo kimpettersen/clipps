@@ -2,7 +2,7 @@ import pyperclip
 import threading
 import os
 
-from tkinter import Tk, Listbox, END
+from tkinter import Tk, Listbox, PhotoImage
 from time import sleep
 from pynput import keyboard
 
@@ -30,7 +30,9 @@ class GUI:
         
         dirpath = os.getcwd()
 
-        self.window.iconbitmap(os.path.join(dirpath,'copyicon.icon'))
+        img = PhotoImage(file=os.path.join(dirpath,'copyicon.gif'))
+        self.window.tk.call('wm', 'iconphoto', self.window._w, img)
+
         self.window.title("Clipboard")
         self.window.bind(self.copy_event_name, self.handle_copy)
         
