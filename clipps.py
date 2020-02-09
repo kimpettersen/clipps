@@ -1,8 +1,7 @@
 import pyperclip
 import threading
-import os
 
-from tkinter import Tk, Listbox, PhotoImage
+from tkinter import Tk, Listbox, PhotoImage, Label
 from time import sleep
 from pynput import keyboard
 
@@ -28,17 +27,19 @@ class GUI:
         self.window = window
         self.window.geometry("1000x600")
         
-        dirpath = os.getcwd()
-
-        img = PhotoImage(file=os.path.join(dirpath,'copyicon.gif'))
-        self.window.tk.call('wm', 'iconphoto', self.window._w, img)
-
-        self.window.title("Clipboard")
+        self.window.title("Clipps")
         self.window.bind(self.copy_event_name, self.handle_copy)
         
         self.listbox = Listbox(self.window)
         self.listbox.pack(fill="both", expand=True)
         self.listbox.bind("<<ListboxSelect>>", self.handle_list_select)
+        
+        try:
+            img = PhotoImage(file='~/.clipps/copyicon.gif')
+            self.window.tk.call('wm', 'iconphoto', self.window._w, img)
+        except Exception:
+            pass
+        
 
     def emit_copy_event(self):
         self.window.event_generate(self.copy_event_name, when="tail")
@@ -63,7 +64,7 @@ class GUI:
         self.window.quit()
 
 if __name__ == "__main__":
-    window = Tk()
+    window = Tk(className="Clipps")
     gui = GUI(window)
 
     l = KeyboardListener(gui)    
