@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Exec=/home/kim/projects/clipps/dist/clipps
+Name=clipps
+GenericName=clipps
+Comment=Start the clipboard manager
+Encoding=UTF-8
+Terminal=false
+Type=Application
+Categories=Application
+Icon=/home/kim/.clipps/copyicon.gif
