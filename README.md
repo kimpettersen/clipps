@@ -8,3 +8,6 @@ It will install python modules, so if you don't want random libraries installed 
 `$ make`
 
 Example of how to crete a shortcut in ubuntu is in `clipps.desktop`
+
+# Dependencies
+Linux requires xclip or xsel and PyQt4 or gtk
